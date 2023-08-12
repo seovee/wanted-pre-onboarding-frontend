@@ -9,7 +9,7 @@ function Header() {
           <Link to={"/"}>Home</Link>
         </li>
         <li>
-          <Link to={"/login"}>Login</Link>
+          <Link to={"/signup"}>Signup</Link>
         </li>
         <li>
           <Link to={"/signin"}>Sign In</Link>

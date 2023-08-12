@@ -12,7 +12,7 @@ function Header() {
           <Link to={"/login"}>Login</Link>
         </li>
         <li>
-          <Link to={"/singin"}>Sign In</Link>
+          <Link to={"/signin"}>Sign In</Link>
         </li>
       </ul>
     </h1>

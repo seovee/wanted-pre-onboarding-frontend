@@ -3,6 +3,7 @@ import Header from "./components/Header";
 import Home from "./screens/Home";
 import Signin from "./screens/Signin";
 import Signup from "./screens/Signup";
+import ToDo from "./screens/Todo";
 
 function Router() {
   return (
@@ -12,6 +13,7 @@ function Router() {
         <Route path="/" element={<Home />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/signin" element={<Signin />} />
+        <Route path="/todo" element={<ToDo />} />
       </Routes>
     </BrowserRouter>
   );

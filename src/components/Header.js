@@ -14,6 +14,9 @@ function Header() {
         <li>
           <Link to={"/signin"}>Sign In</Link>
         </li>
+        <li>
+          <Link to={"/todo"}>ToDo</Link>
+        </li>
       </ul>
     </h1>
   );

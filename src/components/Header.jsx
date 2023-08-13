@@ -2,6 +2,12 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 import { styled } from "styled-components";
 
+const HeaderTitle = styled.h1`
+  text-align: center;
+  font-weight: 200;
+  margin-bottom: 50px;
+`;
+
 const NavContainer = styled.ul`
   display: flex;
   flex-direction: row;
@@ -10,7 +16,7 @@ const NavContainer = styled.ul`
 
 const NavList = styled.li`
   list-style: none;
-  font-size: 35px;
+  font-size: 25px;
   font-weight: 700;
 `;
 
@@ -25,7 +31,9 @@ function Header() {
   };
   return (
     <>
-      <h1>Assignment</h1>
+      <HeaderTitle>
+        Wanted Front-End <strong>Assignment🧐</strong>
+      </HeaderTitle>
       <NavContainer>
         <NavList>
           <NavListLink
@@ -40,7 +48,7 @@ function Header() {
             style={({ isActive }) => (isActive ? activeStyle : {})}
             to={"/signup"}
           >
-            Signup
+            Sign Up
           </NavListLink>
         </NavList>
         <NavList>

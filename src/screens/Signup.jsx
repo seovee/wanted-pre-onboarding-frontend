@@ -4,12 +4,7 @@ import Button from "../components/Button";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Input from "../components/Input";
-
-const SignupTitle = styled.h1`
-  font-size: 30px;
-  font-weight: 700;
-  margin: 50px;
-`;
+import PageTitle from "../components/PageTitle";
 
 const SignupForm = styled.form`
   display: flex;
@@ -60,7 +55,7 @@ function Signup() {
 
   return (
     <Container>
-      <SignupTitle>회원가입</SignupTitle>
+      <PageTitle title="회원가입" />
       <SignupForm onSubmit={SignSubmit}>
         <Input
           type="email"

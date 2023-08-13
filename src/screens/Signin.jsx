@@ -2,6 +2,7 @@ import { styled } from "styled-components";
 import Button from "../components/Button";
 import Container from "../components/Container";
 import Input from "../components/Input";
+import PageTitle from "../components/PageTitle";
 
 const Warpper = styled.div`
   display: flex;
@@ -12,8 +13,8 @@ const Warpper = styled.div`
 
 function Signin() {
   return (
-    <Container style={{}}>
-      <h1>Sign In</h1>
+    <Container>
+      <PageTitle title="로그인" />
       <Warpper>
         <Input type="email" placeholder="이메일을 입력해 주세요." />
         <Input type="password" placeholder="비밀번호를 입력해주세요" />

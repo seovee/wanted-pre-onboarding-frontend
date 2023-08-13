@@ -4,6 +4,7 @@ import Input from "../components/Input";
 import Button from "../components/Button";
 import { styled } from "styled-components";
 import { useState } from "react";
+import TodoItem from "../components/TodoItem";
 
 const AddToDoContainer = styled.div`
   display: flex;
@@ -34,6 +35,15 @@ const AddButton = styled.div`
   box-shadow: 0 2px 3px rgba(0, 0, 0, 0.1), 0 10px 20px rgba(0, 0, 0, 0.06);
 `;
 
+const TodoList = styled.ul`
+  width: 30vw;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  margin-top: 30px;
+  padding: 0;
+`;
+
 function ToDo() {
   const [todos, setTodos] = useState([]);
   const [text, setText] = useState("");
@@ -51,7 +61,7 @@ function ToDo() {
 
   return (
     <Container>
-      <PageTitle title="ToDo" />
+      <PageTitle title="ToDo List" />
       <AddToDoContainer>
         <AddInput
           type="text"
@@ -61,18 +71,11 @@ function ToDo() {
         />
         <AddButton onClick={onClickAdd}>할일 추가</AddButton>
       </AddToDoContainer>
-      <ul>
+      <TodoList>
         {todos.map((todo) => (
-          <li key={todo.id}>
-            <input type="checkbox" />
-            <span>
-              ({todo.id}){todo.text}
-            </span>
-            <button>수정</button>
-            <button onClick={() => onClickDelete(todo.id)}>삭제</button>
-          </li>
+          <TodoItem todo={todo} onClickDelete={onClickDelete} />
         ))}
-      </ul>
+      </TodoList>
     </Container>
   );
 }

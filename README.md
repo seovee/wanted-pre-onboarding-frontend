@@ -1,3 +1,5 @@
+# Wanted Front-End Assignment
+
 - 김진섭
 - 프로젝트의 실행 방법
 - 데모 영상(짤로 만들자)
@@ -6,3 +8,14 @@
 - 기능이 정상 동작하지 않는 예시:
 - 새로고침하면 404 에러 페이지 표출
 - "/" URL이 아닌 "/signup"등의 경로로 바로 접속할 경우 404 에러 페이지 표출 등
+
+## 완료항목
+
+- [x] Assignment 1 - 회원가입, 유효성검사, disabled 구현
+- [x] Assignment 2 - 최원가입 클릭시 /signin으로 이동
+- [] Assignment 3 - 로그인 완료시 /todo로 이동
+- [] Assignment 4
+- [] Assignment 5
+- [] Assignment 6
+- [] Assignment 4
+- [] Assignment 4

@@ -3,6 +3,7 @@ import Container from "../components/Container";
 import Button from "../components/Button";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import Input from "../components/Input";
 
 const SignupTitle = styled.h1`
   font-size: 30px;
@@ -15,14 +16,6 @@ const SignupForm = styled.form`
   flex-direction: column;
   gap: 20px;
   width: 30vw;
-`;
-
-const SignupInput = styled.input`
-  height: 40px;
-  border: 1px solid darkgrey;
-  padding: 0 10px;
-  border-radius: 10px;
-  box-shadow: 0 2px 3px rgba(0, 0, 0, 0.1), 0 10px 20px rgba(0, 0, 0, 0.06);
 `;
 
 const SignupAlertContainer = styled.div`
@@ -69,15 +62,13 @@ function Signup() {
     <Container>
       <SignupTitle>회원가입</SignupTitle>
       <SignupForm onSubmit={SignSubmit}>
-        <SignupInput
+        <Input
           type="email"
-          name="email"
           placeholder="이메일을 입력해 주세요."
           onChange={onChangeEmail}
         />
-        <SignupInput
+        <Input
           type="password"
-          name="password"
           placeholder="비밀번호를 입력해주세요"
           onChange={onChangePassword}
         />

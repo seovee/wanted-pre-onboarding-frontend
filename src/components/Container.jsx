@@ -6,8 +6,8 @@ const ContainerWarpper = styled.div`
   align-items: center;
 `;
 
-function Container({ children }) {
-  return <ContainerWarpper>{children}</ContainerWarpper>;
+function Container({ props, children }) {
+  return <ContainerWarpper {...props}>{children}</ContainerWarpper>;
 }
 
 export default Container;

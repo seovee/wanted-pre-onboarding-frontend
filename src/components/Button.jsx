@@ -15,7 +15,7 @@ function Button({ title, disabled }) {
       {disabled ? (
         <ButtonComponent>{title}</ButtonComponent>
       ) : (
-        <ButtonComponent disabled={disabled} style={{ cursor: "not-allowed" }}>
+        <ButtonComponent disabled={!disabled} style={{ cursor: "not-allowed" }}>
           회원가입
         </ButtonComponent>
       )}
@@ -25,7 +25,6 @@ function Button({ title, disabled }) {
 
 Button.propTypes = {
   title: PropTypes.string,
-  disabled: PropTypes.string,
 };
 
 export default Button;

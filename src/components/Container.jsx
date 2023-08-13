@@ -1,13 +1,13 @@
 import { styled } from "styled-components";
 
-function Container({ children }) {
-  const Container = styled.div`
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  `;
+const ContainerWarpper = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`;
 
-  return <Container>{children}</Container>;
+function Container({ children }) {
+  return <ContainerWarpper>{children}</ContainerWarpper>;
 }
 
 export default Container;

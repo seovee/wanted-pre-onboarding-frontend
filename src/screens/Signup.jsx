@@ -1,7 +1,8 @@
 import { styled } from "styled-components";
 import Container from "../components/Container";
 import Button from "../components/Button";
-import { useCallback, useState } from "react";
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const SignupTitle = styled.h1`
   font-size: 30px;
@@ -24,9 +25,15 @@ const SignupInput = styled.input`
   box-shadow: 0 2px 3px rgba(0, 0, 0, 0.1), 0 10px 20px rgba(0, 0, 0, 0.06);
 `;
 
+const SignupAlertContainer = styled.div`
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+`;
+
 const SignupAlert = styled.p`
   text-align: center;
-  font-size: 14px;
+  font-size: 12px;
   color: red;
   margin: 0;
   padding: 0;
@@ -37,6 +44,7 @@ const SignupAlert = styled.p`
 function Signup() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const navigate = useNavigate();
 
   const onChangeEmail = (e) => {
     const emailValue = e.target.value;
@@ -51,32 +59,36 @@ function Signup() {
   const isValidEmail = email.includes("@");
   const isValidPassword = password.length > 7;
   const buttonActive = isValidEmail && isValidPassword === true;
-  console.log(buttonActive);
+
+  const SignSubmit = async (e) => {
+    e.preventDefault();
+    navigate("/signin");
+  };
 
   return (
     <Container>
       <SignupTitle>회원가입</SignupTitle>
-      <SignupForm>
+      <SignupForm onSubmit={SignSubmit}>
         <SignupInput
           type="email"
-          aria-label="이메일"
           name="email"
           placeholder="이메일을 입력해 주세요."
           onChange={onChangeEmail}
         />
-        {!isValidEmail ? <SignupAlert>"@"을 입력해주세요.</SignupAlert> : null}
         <SignupInput
           type="password"
-          aria-label="비밀번호"
           name="password"
           placeholder="비밀번호를 입력해주세요"
           onChange={onChangePassword}
         />
+        <Button title="회원가입" disabled={buttonActive} />
+      </SignupForm>
+      <SignupAlertContainer>
+        {!isValidEmail ? <SignupAlert>"@"을 입력해주세요.</SignupAlert> : null}
         {!isValidPassword ? (
           <SignupAlert>8자리 이상 입력해주세요.</SignupAlert>
         ) : null}
-        <Button title="회원가입" disabled={buttonActive} />
-      </SignupForm>
+      </SignupAlertContainer>
     </Container>
   );
 }

@@ -16,7 +16,7 @@ function Button({ title, disabled }) {
         <ButtonComponent>{title}</ButtonComponent>
       ) : (
         <ButtonComponent disabled={!disabled} style={{ cursor: "not-allowed" }}>
-          회원가입
+          {title}
         </ButtonComponent>
       )}
     </>

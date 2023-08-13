@@ -9,8 +9,14 @@ const TodoItemList = styled.li`
   gap: 10px;
 `;
 
-const ToDoContents = styled.span`
-  display: inline-block;
+const TodoLabel = styled.label`
+  display: flex;
+  gap: 10px;
+`;
+
+const TodoInput = styled.input``;
+
+const TodoContents = styled.span`
   width: 100%;
 `;
 
@@ -32,8 +38,10 @@ function TodoItem({ todo, onClickDelete }) {
   return (
     <>
       <TodoItemList key={todo.id}>
-        <input type="checkbox" />
-        <ToDoContents>{todo.text}</ToDoContents>
+        <TodoLabel>
+          <TodoInput type="checkbox" />
+          <TodoContents>{todo.text}</TodoContents>
+        </TodoLabel>
         <ButtonWrapper>
           <TodoButtone>수정</TodoButtone>
           <TodoButtone onClick={() => onClickDelete(todo.id)}>삭제</TodoButtone>

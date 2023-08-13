@@ -1,7 +1,5 @@
 import Container from "../components/Container";
 import PageTitle from "../components/PageTitle";
-import Input from "../components/Input";
-import Button from "../components/Button";
 import { styled } from "styled-components";
 import { useState } from "react";
 import TodoItem from "../components/TodoItem";
@@ -73,7 +71,7 @@ function ToDo() {
       </AddToDoContainer>
       <TodoList>
         {todos.map((todo) => (
-          <TodoItem todo={todo} onClickDelete={onClickDelete} />
+          <TodoItem key={todo.id} todo={todo} onClickDelete={onClickDelete} />
         ))}
       </TodoList>
     </Container>

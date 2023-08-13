@@ -9,13 +9,17 @@ const ButtonComponent = styled.button`
   box-shadow: 0 2px 3px rgba(0, 0, 0, 0.1), 0 10px 20px rgba(0, 0, 0, 0.06);
 `;
 
-function Button({ title, disabled }) {
+function Button({ title, disabled, onClick }) {
   return (
     <>
-      {disabled ? (
-        <ButtonComponent>{title}</ButtonComponent>
+      {!disabled ? (
+        <ButtonComponent onClick={onClick}>{title}</ButtonComponent>
       ) : (
-        <ButtonComponent disabled={!disabled} style={{ cursor: "not-allowed" }}>
+        <ButtonComponent
+          onClick={onClick}
+          disabled={disabled}
+          style={{ cursor: "not-allowed" }}
+        >
           {title}
         </ButtonComponent>
       )}

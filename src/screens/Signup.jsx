@@ -1,5 +1,7 @@
 import { styled } from "styled-components";
 import Container from "../components/Container";
+import Button from "../components/Button";
+import { useState } from "react";
 
 const SignupTitle = styled.h1`
   font-size: 30px;
@@ -22,15 +24,10 @@ const SignupInput = styled.input`
   box-shadow: 0 2px 3px rgba(0, 0, 0, 0.1), 0 10px 20px rgba(0, 0, 0, 0.06);
 `;
 
-const SignButton = styled.button`
-  border-radius: 10px;
-  height: 40px;
-  border: none;
-  cursor: pointer;
-  box-shadow: 0 2px 3px rgba(0, 0, 0, 0.1), 0 10px 20px rgba(0, 0, 0, 0.06);
-`;
-
 function Signup() {
+  const [email, setEmail] = useState();
+  const [pwd, setPwd] = useState();
+
   return (
     <Container>
       <SignupTitle>회원가입</SignupTitle>
@@ -47,13 +44,7 @@ function Signup() {
           name="password"
           placeholder="비밀번호를 입력해주세요"
         />
-        {true ? (
-          <SignButton>회원가입</SignButton>
-        ) : (
-          <SignButton disabled style={{ cursor: "not-allowed" }}>
-            회원가입
-          </SignButton>
-        )}
+        <Button title="회원가입" disabled />
       </SignupForm>
     </Container>
   );

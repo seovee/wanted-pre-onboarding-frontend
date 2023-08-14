@@ -48,6 +48,7 @@ const EditInput = styled.input`
 function TodoItem(props) {
   const [updateTodo, setUpdateTodo] = useState("");
   const [isEdit, setIsEdit] = useState(false);
+  const [isChecked, setIsChecked] = useState(false);
 
   const onClickEdit = () => {
     setIsEdit(true);
@@ -63,10 +64,16 @@ function TodoItem(props) {
     setIsEdit(false);
   };
 
+  const onCheckedEdit = (e) => {
+    setIsChecked(e.target.checked);
+    const updateCheckItem = { id: props.todo.id, completed: isChecked };
+    props.onChecked(updateCheckItem);
+  };
+
   return (
     <TodoItemList key={props.todo.id}>
       <TodoLabel>
-        <TodoInput type="checkbox" />
+        <TodoInput type="checkbox" onChange={onCheckedEdit} />
         {isEdit ? (
           <EditInput
             type="text"

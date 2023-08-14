@@ -33,6 +33,20 @@ const AddButton = styled.div`
   box-shadow: 0 2px 3px rgba(0, 0, 0, 0.1), 0 10px 20px rgba(0, 0, 0, 0.06);
 `;
 
+const TodoComentsContainer = styled.div`
+  margin-top: 0;
+  margin-bottom: 5px;
+`;
+const TodoComents = styled.span`
+  display: flex;
+  font-size: 20px;
+
+  p:first-child {
+    font-weight: 700;
+    color: orange;
+  }
+`;
+
 const TodoList = styled.ul`
   width: 30vw;
   display: flex;
@@ -48,7 +62,7 @@ function ToDo() {
 
   const onClickAdd = () => {
     if (!text) return;
-    const newTodo = { id: Date.now(), text };
+    const newTodo = { id: Date.now(), text, completed: false };
     setTodos([...todos, newTodo]);
     setText("");
   };
@@ -64,15 +78,34 @@ function ToDo() {
     setTodos(updateTodos);
   };
 
+  const updateCheck = (updateObject) => {
+    const updateCheck = todos.map((todo) =>
+      todo.id === updateObject.id
+        ? { ...todo, completed: !updateObject.completed }
+        : todo
+    );
+    setTodos(updateCheck);
+  };
+
   const onKeyUpAdd = (e) => {
     if (e.key === "Enter") {
       onClickAdd();
     }
   };
 
+  const completeCount = todos.filter((todo) => todo.completed === false).length;
+
   return (
     <Container>
       <PageTitle title="ToDo List" />
+      {completeCount === 0 ? null : (
+        <TodoComentsContainer>
+          <TodoComents>
+            <p>{completeCount}개의 할일</p>
+            <p>이 남았습니다.</p>
+          </TodoComents>
+        </TodoComentsContainer>
+      )}
       <AddToDoContainer>
         <AddInput
           type="text"
@@ -83,12 +116,14 @@ function ToDo() {
         />
         <AddButton onClick={onClickAdd}>할일 추가</AddButton>
       </AddToDoContainer>
+
       <TodoList>
         {todos.map((todo) => (
           <TodoItem
             key={todo.id}
             todo={todo}
             onUpdate={updateTodo}
+            onChecked={updateCheck}
             onClickDelete={onClickDelete}
           />
         ))}

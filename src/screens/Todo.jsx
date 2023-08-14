@@ -64,6 +64,12 @@ function ToDo() {
     setTodos(updateTodos);
   };
 
+  const onKeyUpAdd = (e) => {
+    if (e.key === "Enter") {
+      onClickAdd();
+    }
+  };
+
   return (
     <Container>
       <PageTitle title="ToDo List" />
@@ -73,6 +79,7 @@ function ToDo() {
           value={text}
           placeholder="할일을 추가"
           onChange={(e) => setText(e.target.value)}
+          onKeyUp={onKeyUpAdd}
         />
         <AddButton onClick={onClickAdd}>할일 추가</AddButton>
       </AddToDoContainer>

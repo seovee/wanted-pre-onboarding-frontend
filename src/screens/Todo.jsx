@@ -57,6 +57,13 @@ function ToDo() {
     setTodos(todos.filter((todoItem) => todoItem.id !== id));
   };
 
+  const updateTodo = (updateObject) => {
+    const updateTodos = todos.map((todo) =>
+      todo.id === updateObject.id ? { ...todo, text: updateObject.text } : todo
+    );
+    setTodos(updateTodos);
+  };
+
   return (
     <Container>
       <PageTitle title="ToDo List" />
@@ -71,7 +78,12 @@ function ToDo() {
       </AddToDoContainer>
       <TodoList>
         {todos.map((todo) => (
-          <TodoItem key={todo.id} todo={todo} onClickDelete={onClickDelete} />
+          <TodoItem
+            key={todo.id}
+            todo={todo}
+            onUpdate={updateTodo}
+            onClickDelete={onClickDelete}
+          />
         ))}
       </TodoList>
     </Container>

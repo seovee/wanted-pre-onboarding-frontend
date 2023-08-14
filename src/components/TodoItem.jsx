@@ -12,11 +12,12 @@ const TodoItemList = styled.li`
 
 const TodoLabel = styled.label`
   display: flex;
+  justify-content: space-around;
+  width: 100%;
   gap: 10px;
 `;
 
 const TodoInput = styled.input``;
-
 const TodoContents = styled.span`
   width: 100%;
 `;
@@ -37,13 +38,14 @@ const TodoButtone = styled.button`
 
 const EditInput = styled.input`
   border: 1px solid darkgrey;
-  width: 180px;
+  display: flex;
+  width: 100%;
   padding: 0 5px;
   border-radius: 2px;
   box-shadow: 0 2px 3px rgba(0, 0, 0, 0.1), 0 10px 20px rgba(0, 0, 0, 0.06);
 `;
 
-function TodoItem({ key, todo, onClickDelete }) {
+function TodoItem(props) {
   const [updateTodo, setUpdateTodo] = useState("");
   const [isEdit, setIsEdit] = useState(false);
 
@@ -56,34 +58,37 @@ function TodoItem({ key, todo, onClickDelete }) {
   };
 
   const onChangeEdit = (e) => {
-    const edit = e.target.value;
-    setIsEdit(edit);
+    const updatedTodo = { id: props.todo.id, text: updateTodo };
+    props.onUpdate(updatedTodo);
+    setIsEdit(false);
   };
 
   return (
-    <TodoItemList key={todo.id}>
+    <TodoItemList key={props.todo.id}>
       <TodoLabel>
         <TodoInput type="checkbox" />
         {isEdit ? (
           <EditInput
             type="text"
             placeholder="수정할 할일을 추가하세요"
-            onChange={onChangeEdit}
+            onChange={(newText) => setUpdateTodo(newText.target.value)}
           />
         ) : (
-          <TodoContents>{todo.text}</TodoContents>
+          <TodoContents>{props.todo.text}</TodoContents>
         )}
       </TodoLabel>
       <ButtonWrapper>
         {isEdit ? (
-          <TodoButtone>완료</TodoButtone>
+          <TodoButtone onClick={onChangeEdit}>완료</TodoButtone>
         ) : (
           <TodoButtone onClick={onClickEdit}>수정</TodoButtone>
         )}
         {isEdit ? (
           <TodoButtone onClick={onClickEditCancel}>취소</TodoButtone>
         ) : (
-          <TodoButtone onClick={() => onClickDelete(todo.id)}>삭제</TodoButtone>
+          <TodoButtone onClick={() => props.onClickDelete(props.todo.id)}>
+            삭제
+          </TodoButtone>
         )}
       </ButtonWrapper>
     </TodoItemList>

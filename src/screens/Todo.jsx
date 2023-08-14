@@ -113,8 +113,11 @@ function ToDo() {
           placeholder="할일을 추가"
           onChange={(e) => setText(e.target.value)}
           onKeyUp={onKeyUpAdd}
+          data-testid="new-todo-input"
         />
-        <AddButton onClick={onClickAdd}>할일 추가</AddButton>
+        <AddButton onClick={onClickAdd} data-testid="new-todo-add-button">
+          할일 추가
+        </AddButton>
       </AddToDoContainer>
 
       <TodoList>

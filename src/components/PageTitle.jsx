@@ -7,8 +7,8 @@ const Title = styled.h1`
   margin-bottom: 50px;
 `;
 
-function PageTitle({ props, title }) {
-  return <Title {...props}>{title}</Title>;
+function PageTitle(props) {
+  return <Title {...props}>{props.title}</Title>;
 }
 
 export default PageTitle;

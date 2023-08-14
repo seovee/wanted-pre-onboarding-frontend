@@ -8,14 +8,15 @@ const InputComponent = styled.input`
   box-shadow: 0 2px 3px rgba(0, 0, 0, 0.1), 0 10px 20px rgba(0, 0, 0, 0.06);
 `;
 
-function Input({ type, name, placeholder, onChange }) {
+function Input(props) {
   return (
     <>
       <InputComponent
-        type={type}
-        name={name}
-        placeholder={placeholder}
-        onChange={onChange}
+        type={props.type}
+        name={props.name}
+        placeholder={props.placeholder}
+        onChange={props.onChange}
+        {...props}
       />
     </>
   );

@@ -38,13 +38,19 @@ function Signin() {
           type="email"
           placeholder="@가 포함된 이메일을 입력해 주세요."
           onChange={onChangeEmail}
+          data-testid="email-input"
         />
         <Input
           type="password"
           placeholder="8자리 비밀번호를 입력해주세요"
           onChange={onChangePassword}
+          data-testid="password-input"
         />
-        <Button title="로그인" disabled={!buttonActive} />
+        <Button
+          title="로그인"
+          disabled={!buttonActive}
+          data-testid="signin-button"
+        />
       </Warpper>
     </Container>
   );

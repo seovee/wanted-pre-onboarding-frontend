@@ -79,6 +79,7 @@ function TodoItem(props) {
             type="text"
             placeholder="수정할 할일을 추가하세요"
             onChange={(newText) => setUpdateTodo(newText.target.value)}
+            data-testid="modify-input"
           />
         ) : (
           <TodoContents>{props.todo.text}</TodoContents>
@@ -86,14 +87,23 @@ function TodoItem(props) {
       </TodoLabel>
       <ButtonWrapper>
         {isEdit ? (
-          <TodoButtone onClick={onChangeEdit}>완료</TodoButtone>
+          <TodoButtone onClick={onChangeEdit} data-testid="submit-button">
+            제출
+          </TodoButtone>
         ) : (
-          <TodoButtone onClick={onClickEdit}>수정</TodoButtone>
+          <TodoButtone onClick={onClickEdit} data-testid="modify-button">
+            수정
+          </TodoButtone>
         )}
         {isEdit ? (
-          <TodoButtone onClick={onClickEditCancel}>취소</TodoButtone>
+          <TodoButtone onClick={onClickEditCancel} data-testid="cancel-button">
+            취소
+          </TodoButtone>
         ) : (
-          <TodoButtone onClick={() => props.onClickDelete(props.todo.id)}>
+          <TodoButtone
+            onClick={() => props.onClickDelete(props.todo.id)}
+            data-testid="delete-button"
+          >
             삭제
           </TodoButtone>
         )}

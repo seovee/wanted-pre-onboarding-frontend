@@ -61,13 +61,19 @@ function Signup() {
           type="email"
           placeholder="이메일을 입력해 주세요."
           onChange={onChangeEmail}
+          data-testid="email-input"
         />
         <Input
           type="password"
           placeholder="비밀번호를 입력해주세요"
           onChange={onChangePassword}
+          data-testid="password-input"
         />
-        <Button title="회원가입" disabled={!buttonActive} />
+        <Button
+          title="회원가입"
+          disabled={!buttonActive}
+          data-testid="signup-button"
+        />
       </SignupForm>
       <SignupAlertContainer>
         {!isValidEmail ? <SignupAlert>"@"을 입력해주세요.</SignupAlert> : null}

@@ -5,6 +5,7 @@ import Input from "../components/Input";
 import Button from "../components/Button";
 import Container from "../components/Container";
 import PageTitle from "../components/PageTitle";
+import { signupAPI } from "../Api";
 
 const SignupForm = styled.form`
   display: flex;
@@ -32,6 +33,7 @@ const SignupAlert = styled.p`
 function Signup() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [signupState, setSignupState] = useState(null);
   const navigate = useNavigate();
 
   const onChangeEmail = (e) => {
@@ -47,6 +49,20 @@ function Signup() {
   const isValidEmail = email.includes("@");
   const isValidPassword = password.length > 7;
   const buttonActive = isValidEmail && isValidPassword === true;
+
+  const onClickSignup = () => {
+    signupAPI(email, password)
+      .then((data) => {
+        console.log(data);
+        setSignupState(data.mesaage);
+      })
+      .catch((error) => {
+        console.error("error:", error);
+        setSignupState("회원가입 실패");
+      });
+  };
+
+  console.log(signupState);
 
   const SignupSubmit = (e) => {
     e.preventDefault();
@@ -73,8 +89,10 @@ function Signup() {
           title="회원가입"
           disabled={!buttonActive}
           data-testid="signup-button"
+          onClick={onClickSignup}
         />
       </SignupForm>
+
       <SignupAlertContainer>
         {!isValidEmail ? <SignupAlert>"@"을 입력해주세요.</SignupAlert> : null}
         {!isValidPassword ? (

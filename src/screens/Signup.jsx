@@ -48,7 +48,7 @@ function Signup() {
   const isValidPassword = password.length > 7;
   const buttonActive = isValidEmail && isValidPassword === true;
 
-  const SignSubmit = async (e) => {
+  const SignupSubmit = (e) => {
     e.preventDefault();
     navigate("/signin");
   };
@@ -56,7 +56,7 @@ function Signup() {
   return (
     <Container>
       <PageTitle title="회원가입" />
-      <SignupForm onSubmit={SignSubmit}>
+      <SignupForm onSubmit={SignupSubmit}>
         <Input
           type="email"
           placeholder="이메일을 입력해 주세요."

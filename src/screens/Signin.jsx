@@ -4,8 +4,9 @@ import Input from "../components/Input";
 import Button from "../components/Button";
 import Container from "../components/Container";
 import PageTitle from "../components/PageTitle";
+import { useNavigate } from "react-router-dom";
 
-const Warpper = styled.div`
+const SigninForm = styled.form`
   display: flex;
   flex-direction: column;
   gap: 20px;
@@ -15,6 +16,7 @@ const Warpper = styled.div`
 function Signin() {
   const [loginEmail, setLoginEmail] = useState("");
   const [loginPassword, setLoginPassword] = useState("");
+  const navigate = useNavigate();
 
   const onChangeEmail = (e) => {
     const emailValue = e.target.value;
@@ -30,10 +32,15 @@ function Signin() {
   const isValidPassword = loginPassword.length > 7;
   const buttonActive = isValidEmail && isValidPassword === true;
 
+  const SigninSubmit = (e) => {
+    e.preventDefault();
+    navigate("/todo");
+  };
+
   return (
     <Container>
       <PageTitle title="로그인" />
-      <Warpper>
+      <SigninForm onSubmit={SigninSubmit}>
         <Input
           type="email"
           placeholder="@가 포함된 이메일을 입력해 주세요."
@@ -51,7 +58,7 @@ function Signin() {
           disabled={!buttonActive}
           data-testid="signin-button"
         />
-      </Warpper>
+      </SigninForm>
     </Container>
   );
 }

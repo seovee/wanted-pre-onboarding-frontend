@@ -1,7 +1,7 @@
 import Container from "../components/Container";
 import PageTitle from "../components/PageTitle";
 import { styled } from "styled-components";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import TodoItem from "../components/TodoItem";
 
 const AddToDoContainer = styled.div`
@@ -57,8 +57,23 @@ const TodoList = styled.ul`
 `;
 
 function ToDo() {
-  const [todos, setTodos] = useState([]);
+  const [todos, setTodos] = useState(
+    JSON.parse(localStorage.getItem("todos")) || []
+  );
   const [text, setText] = useState("");
+
+  // localStorage 부분_1
+  useEffect(() => {
+    const storedTodos = JSON.parse(localStorage.getItem("todos"));
+    if (storedTodos) {
+      setTodos(storedTodos);
+    }
+  }, []);
+
+  // localStorage 부분_2
+  useEffect(() => {
+    localStorage.setItem("todos", JSON.stringify(todos));
+  }, [todos]);
 
   const onClickAdd = () => {
     if (!text) return;

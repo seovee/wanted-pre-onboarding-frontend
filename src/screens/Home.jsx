@@ -1,8 +1,12 @@
+import { Link } from "react-router-dom";
 import { styled } from "styled-components";
 import Container from "../components/Container";
 import PageTitle from "../components/PageTitle";
-import { Link } from "react-router-dom";
-const HomeComments = styled.p``;
+
+const HomeComments = styled.p`
+  font-size: 25px;
+  color: gray;
+`;
 
 function Home() {
   return (

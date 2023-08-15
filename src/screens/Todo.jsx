@@ -1,8 +1,8 @@
+import { useEffect, useState } from "react";
+import { styled } from "styled-components";
+import TodoItem from "../components/TodoItem";
 import Container from "../components/Container";
 import PageTitle from "../components/PageTitle";
-import { styled } from "styled-components";
-import { useEffect, useState } from "react";
-import TodoItem from "../components/TodoItem";
 
 const AddToDoContainer = styled.div`
   display: flex;
@@ -62,7 +62,7 @@ function ToDo() {
   );
   const [text, setText] = useState("");
 
-  // localStorage 부분_1
+  // localStorage_1
   useEffect(() => {
     const storedTodos = JSON.parse(localStorage.getItem("todos"));
     if (storedTodos) {
@@ -70,11 +70,12 @@ function ToDo() {
     }
   }, []);
 
-  // localStorage 부분_2
+  // localStorage_2
   useEffect(() => {
     localStorage.setItem("todos", JSON.stringify(todos));
   }, [todos]);
 
+  // 할일 추가 이벤트
   const onClickAdd = () => {
     if (!text) return;
     const newTodo = { id: Date.now(), text, completed: false };
@@ -82,10 +83,12 @@ function ToDo() {
     setText("");
   };
 
+  // 할일 삭제 이벤트
   const onClickDelete = (id) => {
     setTodos(todos.filter((todoItem) => todoItem.id !== id));
   };
 
+  // 새로운 할일 넣어주는 함수
   const updateTodo = (updateObject) => {
     const updateTodos = todos.map((todo) =>
       todo.id === updateObject.id ? { ...todo, text: updateObject.text } : todo
@@ -93,6 +96,7 @@ function ToDo() {
     setTodos(updateTodos);
   };
 
+  // 체크상태 확인하는 함수
   const updateCheck = (updateObject) => {
     const updateCheck = todos.map((todo) =>
       todo.id === updateObject.id
@@ -102,12 +106,14 @@ function ToDo() {
     setTodos(updateCheck);
   };
 
+  // Enter키 기능 추가
   const onKeyUpAdd = (e) => {
     if (e.key === "Enter") {
       onClickAdd();
     }
   };
 
+  // 할일 완료 개수 Count
   const completeCount = todos.filter((todo) => todo.completed === false).length;
 
   return (

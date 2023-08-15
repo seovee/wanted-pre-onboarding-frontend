@@ -1,9 +1,9 @@
-import { styled } from "styled-components";
-import Container from "../components/Container";
-import Button from "../components/Button";
 import { useState } from "react";
+import { styled } from "styled-components";
 import { useNavigate } from "react-router-dom";
 import Input from "../components/Input";
+import Button from "../components/Button";
+import Container from "../components/Container";
 import PageTitle from "../components/PageTitle";
 
 const SignupForm = styled.form`

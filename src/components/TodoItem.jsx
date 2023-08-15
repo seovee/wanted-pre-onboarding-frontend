@@ -50,20 +50,24 @@ function TodoItem(props) {
   const [isEdit, setIsEdit] = useState(false);
   const [isChecked, setIsChecked] = useState(false);
 
+  // 수정 이벤트
   const onClickEdit = () => {
     setIsEdit(true);
   };
 
+  // 수정취소 이벤트
   const onClickEditCancel = () => {
     setIsEdit(false);
   };
 
+  // 수정 완료 이벤트
   const onChangeEdit = (e) => {
     const updatedTodo = { id: props.todo.id, text: updateTodo };
     props.onUpdate(updatedTodo);
     setIsEdit(false);
   };
 
+  // 체크박스 이벤트
   const onCheckedEdit = (e) => {
     setIsChecked(e.target.checked);
     const updateCheckItem = { id: props.todo.id, completed: isChecked };

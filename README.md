@@ -1,4 +1,12 @@
-# 🧑🏻‍💻 김진섭 - Wanted Front-End Assignment 
+# 🧑🏻‍💻 김진섭
+원티드 Front-End Assignment Repogitory입니다.  
+회원가입, 로그인의 기본적인 기능이 구현되었고, Todo(할일)을 추가,수정,삭제를 할 수 있습니다.  
+CSS부분은 Flex로 간단한 반응형으로 구현했습니다. 
+
+```
+사용기술 : React.js, React-Router, Styled-Components, Gh-pages
+```
+
 
 ## 실행 방법
 
@@ -15,14 +23,18 @@ npm start
 #### 회원가입 GIF
 ![회원가입GIF](https://github.com/seovee/wanted-pre-onboarding-frontend/assets/18073169/c737bb30-1640-4b03-8d7c-1bdb4a4efc6a)
 
+
 #### 로그인 GIF
 ![로그인GIF](https://github.com/seovee/wanted-pre-onboarding-frontend/assets/18073169/02cf8b07-0fbf-4a20-8948-6612a19a9adc)
+
 
 #### 할일 추가 GIF
 ![할일추가GIF](https://github.com/seovee/wanted-pre-onboarding-frontend/assets/18073169/a33de817-d337-49ef-a179-d2a0dac8d9ec)
 
+
 #### 할일 수정 / 삭제 GIF
 ![할일 수정:삭제](https://github.com/seovee/wanted-pre-onboarding-frontend/assets/18073169/219abb0f-cac4-48a7-a501-1f30d1c4caab)
+
 
 ## 완료사항 Check
 
